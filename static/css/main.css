@@ -1,0 +1,91 @@
+* {
+    font-family: 'Lato', sans-serif;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0 auto;
+}
+
+body {
+    background-color: #232F3D;
+}
+
+a {
+    text-decoration: none;
+}
+
+.wrapper {
+    max-width: 1100px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+/* ---------------- NAVBAR ---------------- */
+nav {
+    width: 100%;
+    height: 70px;
+    background-color: #2B3745;
+}
+
+nav .wrapper {
+    display: flex;
+    align-items: center;
+}
+
+#nav-logo {
+    height: 22px;
+}
+
+#menu-items {
+    height: 100%;
+    display: flex;
+}
+
+.menu-item {
+    font-size: 16px;
+    color: white;
+    margin-left: 25px;
+}
+
+.menu-item div {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.menu-item-active div {
+    box-shadow: inset 0 -3px 0 #36B250;
+}
+
+#menu-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+#profile-name {
+    color: white;
+    font-size: 16px;
+}
+
+#profile-pic {
+    height: 35px;
+    border-radius: 100px;
+    margin: 0 20px 0 20px;
+}
+
+#notifications-btn div {
+    width: 35px;
+    height: 35px;
+    border-radius: 100px;
+    background-color: #FE4155;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
