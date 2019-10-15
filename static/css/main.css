@@ -96,3 +96,17 @@ nav .wrapper {
     align-items: center;
     justify-content: center;
 }
+
+/* ---------------- FOOTER ---------------- */
+footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    height: 40px;
+    background-color: #202A36;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.3)
+}
