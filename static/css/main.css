@@ -23,6 +23,13 @@ a {
     margin: 0 auto;
 }
 
+.section-header {
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 30px;
+}
+
 /* ---------------- NAVBAR ---------------- */
 nav {
     width: 100%;

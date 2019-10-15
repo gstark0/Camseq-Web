@@ -1,0 +1,63 @@
+#cameras {
+    margin-top: 60px;
+}
+
+#cameras-list {
+    width: 100%;
+}
+
+.camera-item {
+    width: calc(100% - 50px);
+    height: 60px;
+    background-color: #2B3745;
+    display: flex;
+    align-items: center;
+    padding: 0 25px 0 25px;
+}
+
+.camera-item + .camera-item {
+    margin-top: 15px;
+}
+
+.camera-item:hover {
+    cursor: pointer;
+    background-color: #405165;
+}
+
+.camera-item-name {
+    color: white;
+    font-size: 16px;
+}
+
+.camera-item-location {
+    color: rgba(255, 255, 255, 0.5);
+    margin-left: 25px;
+}
+
+.camera-item-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.camera-item-alerts + .camera-item-alerts {
+    margin-left: 25px;
+}
+
+.camera-item-alerts i {
+    font-size: 15px;
+}
+
+.camera-item-alerts span {
+    color: white;
+    font-size: 16px;
+    margin-left: 2px;
+}
+
+.threat {
+    color: #EF1758;
+}
+
+.warning {
+    color: #FFBF45;
+}
