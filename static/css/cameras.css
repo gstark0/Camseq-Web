@@ -1,5 +1,6 @@
 #cameras {
-    margin-top: 60px;
+    margin-top: 55px;
+    min-height: calc(100vh - 70px - 40px - 55px - 55px);
 }
 
 #cameras-list {

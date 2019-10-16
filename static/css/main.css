@@ -27,7 +27,23 @@ a {
     font-size: 32px;
     font-weight: bold;
     color: white;
-    margin-bottom: 30px;
+    margin: 5px 0 30px 0;
+}
+
+.subsection-header {
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+    margin: 5px 0 20px 0;
+}
+
+.back-btn {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 16px;
+}
+
+.back-btn i {
+    margin-right: 5px;
 }
 
 /* ---------------- NAVBAR ---------------- */
@@ -100,9 +116,8 @@ nav .wrapper {
 /* ---------------- FOOTER ---------------- */
 footer {
     width: 100%;
-    position: absolute;
-    bottom: 0;
     height: 40px;
+    margin-top: 55px;
     background-color: #202A36;
     display: flex;
     justify-content: center;

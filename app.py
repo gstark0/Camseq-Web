@@ -2,7 +2,11 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/preview')
+def preview():
+    return render_template('preview.html')
+
+@app.route('/cameras')
 def index():
     return render_template('cameras.html')
 

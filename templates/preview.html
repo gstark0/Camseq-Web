@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Podgląd kamery</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+        <link rel="stylesheet" href="./static/css/main.css">
+        <link rel="stylesheet" href="./static/css/preview.css">
+    </head>
+
+    <body>
+        <nav>
+            <div class="wrapper">
+                <a href="#"><img id="nav-logo" src="./static/img/logo.png"></a>
+
+                <div id="menu-items">
+                    <a href="#" class="menu-item menu-item-active"> <div>Kamery</div> </a>
+                    <a href="#" class="menu-item"> <div>Raporty</div> </a>
+                    <a href="#" class="menu-item"> <div>Ustawienia</div> </a>
+                </div>
+
+                <div id="menu-right">
+                    <a href="#" id="profile-name">Grzegorz Stark</a>
+                    <img src="./static/img/profile.png" id="profile-pic">
+                    <a id="notifications-btn" href="#"><div>6</div></a>
+                </div>
+            </div>
+        </nav>
+
+        <div id="main-content">
+            <div class="wrapper">
+                <a href="/cameras" class="back-btn"><i class="fas fa-arrow-left"></i>Powrót</a>
+                <div class="section-header">Lotnisko Chopina - Terminal 1 (Kamera 01)</div>
+
+                <div id="camera-section">
+                    <div id="camera-image"></div>
+                    <div id="camera-info">
+                        <div id="camera-threats" class="camera-alerts">
+                            <div class="value">0</div>
+                            <div class="label">Poważne zagrożenia</div>
+                        </div>
+
+                        <div id="camera-warnings" class="camera-alerts">
+                            <div class="value">0</div>
+                            <div class="label">Ostrzeżenia</div>
+                        </div>
+
+                        <div id="camera-details">
+                            <div class="camera-details">
+                                <div class="label">Lokalizacja</div>
+                                <div class="value" id="location">Okęcie, Warszawa, Polska</div>
+                            </div>
+
+                            <div class="camera-details">
+                                <div class="label">Współrzędne</div>
+                                <div class="value" id="coordinates">52°09′57′′N 20°58′08′′E</div>
+                            </div>
+                            
+                            <div class="camera-details">
+                                <div class="label">Wysokość położenia kamery</div>
+                                <div class="value" id="height">4.5 m</div>
+                            </div>
+
+                            <div class="camera-details">
+                                <div class="label">Data i czas</div>
+                                <div class="value" id="time">16.10.2019 - 12:37</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="registry">
+                    <div class="subsection-header">Dziennik zdarzeń</div>
+                    <div id="registry-content">
+
+                        <div class="registry-item">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span class="register-item-description">Wykryto broń</span>
+                            <span class="register-item-date">16.10.2019 - 11:05</span>
+                        </div>
+
+                        <div class="registry-item">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span class="register-item-description">Wykryto broń</span>
+                            <span class="register-item-date">16.10.2019 - 11:05</span>
+                        </div>
+
+                        <div class="registry-item">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span class="register-item-description">Wykryto broń</span>
+                            <span class="register-item-date">16.10.2019 - 11:05</span>
+                        </div>
+
+                        <div class="registry-item">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span class="register-item-description">Wykryto broń</span>
+                            <span class="register-item-date">16.10.2019 - 11:05</span>
+                        </div>
+
+                        <div class="registry-item">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span class="register-item-description">Wykryto broń</span>
+                            <span class="register-item-date">16.10.2019 - 11:05</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>&copy; 2019 Grzegorz Stark</footer>
+    </body>
+</html>

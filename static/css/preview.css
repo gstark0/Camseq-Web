@@ -1,0 +1,130 @@
+#main-content {
+    margin: 55px 0 0 0;
+    min-height: calc(100vh - 70px - 40px - 55px - 55px);
+}
+
+#camera-section {
+    height: 444px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+#camera-image {
+    width: 790px;
+    height: 100%;
+    background-image: url('../img/airport.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+#camera-info {
+    padding: 25px 35px;
+    width: calc(288px - 70px);
+    height: calc(100% - 50px);
+    background-color: #2B3745;
+    display: flex;
+    flex-direction: column;
+}
+
+.camera-alerts {
+    width: calc(100% - 40px);
+    height: calc(75px - 40px);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    padding: 20px;
+}
+
+.camera-alerts + .camera-alerts {
+    margin-top: 10px;
+}
+
+.camera-alerts .value {
+    color: white;
+    font-size: 28px;
+}
+
+.camera-alerts .label {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+}
+
+.fa-exclamation-triangle {
+    color: #FFBF45;
+}
+
+.fa-exclamation-circle {
+    color: #EF1758;
+}
+
+#camera-threats {
+    background-color: #9C1F4B;
+}
+
+#camera-warnings {
+    background-color: #A5883E;
+}
+
+#camera-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.camera-details {
+    margin-top: 15px;
+}
+
+.camera-details .label {
+    font-size: 14px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.35);
+    margin-bottom: 2px;
+}
+
+.camera-details .value {
+    font-size: 16px;
+    color: white;
+}
+
+#registry-content {
+    width: 100%;
+}
+
+.registry-item {
+    width: 100%;
+    height: 50px;
+    background-color: #2B3745;
+    display: flex;
+    align-items: center;
+}
+
+.registry-item + .registry-item {
+    margin-top: 10px;
+}
+
+.registry-item:hover {
+    background-color: #405165;
+    cursor: pointer;
+}
+
+.registry-item i {
+    margin: 0 25px;
+    font-size: 16px;
+}
+
+.register-item-description {
+    color: white;
+    font-size: 16px;
+}
+
+.register-item-date {
+    margin-left: auto;
+    margin-right: 25px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+footer {
+
+}
