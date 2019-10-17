@@ -25,6 +25,7 @@
     background-color: #2B3745;
     display: flex;
     flex-direction: column;
+    z-index: -2;
 }
 
 .camera-alerts {
@@ -35,6 +36,7 @@
     flex-direction: column;
     position: relative;
     padding: 20px;
+    z-index: -1;
 }
 
 .camera-alerts + .camera-alerts {
@@ -125,6 +127,69 @@
     color: rgba(255, 255, 255, 0.6);
 }
 
-footer {
+#preview-modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
 
+#preview-modal-content {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 45px;
+    background-color: #2B3745;
+    position: relative;
+}
+
+#preview-modal-type {
+    margin: 0;
+}
+
+#preview-modal-date {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-left: auto;
+}
+
+.preview-modal-row {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+#camera-footage {
+    margin: 15px 0;
+    width: 530px;
+}
+
+#download-footage {
+    color: white;
+    font-size: 16px;
+}
+
+#download-footage i {
+    margin-right: 7px;
+}
+
+#type-footage {
+    margin-left: auto;
+    font-size: 16px;
+    color: #EF1758;
+}
+
+#type-footage i {
+    margin-right: 7px;
+}
+
+#close-preview-modal {
+    position: absolute;
+    right: 45px;
+    top: 20px;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.5);
 }

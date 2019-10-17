@@ -11,6 +11,24 @@
     </head>
 
     <body>
+        <div id="preview-modal">
+            <div id="preview-modal-content">
+                <a href="#" id="close-preview-modal"><i class="fas fa-times"></i></a>
+                <div class="preview-modal-row">
+                    <div class="camera-details" id="preview-modal-type">
+                        <div class="label">Zdarzenie</div>
+                        <div class="value" id="type">Wykryto broń</div>
+                    </div>
+                    <div id="preview-modal-date">16.10.2019 - 11:05</div>
+                </div>
+                <img id="camera-footage" src="./static/img/airport.jpg" alt="Obraz z kamery">
+                <div class="preview-modal-row">
+                    <a id="download-footage" href="#"><i class="fas fa-download"></i>Pobierz nagranie</a>
+                    <span id="type-footage"><i class="fas fa-exclamation-circle"></i> Poważne zagrożenie</span>
+                </div>
+            </div>
+        </div>
+
         <nav>
             <div class="wrapper">
                 <a href="#"><img id="nav-logo" src="./static/img/logo.png"></a>
