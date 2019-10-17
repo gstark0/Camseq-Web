@@ -1,0 +1,19 @@
+#public-badge {
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    background-color: #36B250;
+    padding: 5px 10px;
+    margin-left: 15px;
+    border-radius: 5px;
+}
+
+#go-to-camseq {
+    font-size: 16px;
+    color: white;
+    margin-left: auto;
+}
+
+#mapid {
+    height: calc(100% - 70px);
+}
