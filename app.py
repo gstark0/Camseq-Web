@@ -15,7 +15,12 @@ def preview():
 
 @app.route('/cameras')
 def cameras():
-    return render_template('cameras.html')
+	user_logged = session.get('logged_in')
+	if user_logged:
+		cameras = dbmngr.get_cameras_by_user_id(user_logged)
+		return render_template('cameras.html', cameras=cameras)
+	else:
+		return redirect('/login')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

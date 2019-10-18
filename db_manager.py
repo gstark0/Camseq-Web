@@ -8,6 +8,7 @@ def dict_factory(cursor, row):
 		d[col[0]] = row[idx]
 	return d
 
+# Get user_id with provided login and password
 def get_user(login, password):
 	with sqlite3.connect(db_name) as conn:
 		# SQLite3 doesn't return keys by default
@@ -17,3 +18,13 @@ def get_user(login, password):
 		cur.execute('SELECT user_id FROM users WHERE login=? AND password=?', (login, password))
 		result = cur.fetchone()
 	return result
+
+def get_cameras_by_user_id(user_id):
+	with sqlite3.connect(db_name) as conn:
+		# SQLite3 doesn't return keys by default
+		conn.row_factory = dict_factory
+		cur = conn.cursor()
+
+		cur.execute('SELECT * FROM cameras WHERE user_id=?', (user_id,))
+		results = cur.fetchall()
+	return results
