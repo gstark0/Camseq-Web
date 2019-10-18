@@ -22,6 +22,11 @@ def cameras():
 	else:
 		return redirect('/login')
 
+@app.route('/logout')
+def logout():
+	session['logged_in'] = False
+	return redirect('/login')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
 	if request.method == 'GET':
