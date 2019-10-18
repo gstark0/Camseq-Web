@@ -1,3 +1,5 @@
+db_name = 'database.db'
+
 width = 128
 height = 128
 
