@@ -1,3 +1,6 @@
+import os
+
+SECRET_KEY = os.urandom(24)
 db_name = 'database.db'
 
 width = 128

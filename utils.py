@@ -31,4 +31,3 @@ def get_data(paths):
 
 
 
-
