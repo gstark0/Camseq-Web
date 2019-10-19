@@ -28,3 +28,23 @@ def get_cameras_by_user_id(user_id):
 		cur.execute('SELECT * FROM cameras WHERE user_id=?', (user_id,))
 		results = cur.fetchall()
 	return results
+
+def get_camera_by_id(camera_id):
+	with sqlite3.connect(db_name) as conn:
+		# SQLite3 doesn't return keys by default
+		conn.row_factory = dict_factory
+		cur = conn.cursor()
+
+		cur.execute('SELECT * FROM cameras WHERE camera_id=?', (camera_id,))
+		result = cur.fetchone()
+	return result	
+
+def get_incidents_by_camera(camera_id):
+	with sqlite3.connect(db_name) as conn:
+		# SQLite3 doesn't return keys by default
+		conn.row_factory = dict_factory
+		cur = conn.cursor()
+
+		cur.execute('SELECT * FROM incidents WHERE camera_id=?', (camera_id,))
+		results = cur.fetchall()
+	return results

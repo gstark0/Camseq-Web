@@ -9,9 +9,15 @@ app.config['SECRET_KEY'] = SECRET_KEY
 def public():
     return render_template('public.html')
 
-@app.route('/preview')
-def preview():
-    return render_template('preview.html')
+@app.route('/preview/<int:camera_id>')
+def preview(camera_id):
+	user_logged = session.get('logged_in')
+	if user_logged:
+		camera_info = dbmngr.get_camera_by_id(camera_id)
+		camera_incidents = dbmngr.get_incidents_by_camera(camera_id)
+		return render_template('preview.html', camera_info=camera_info, camera_incidents=camera_incidents)
+	else:
+		return redirect('/login')
 
 @app.route('/cameras')
 def cameras():

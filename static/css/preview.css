@@ -100,6 +100,7 @@
     background-color: #2B3745;
     display: flex;
     align-items: center;
+    transition: .2s;
 }
 
 .registry-item + .registry-item {

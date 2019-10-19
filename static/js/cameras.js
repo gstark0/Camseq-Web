@@ -1,8 +1,7 @@
 $(document).ready(function() {
 	camerasList.forEach(function(c) {
-		console.log(c)
-		$('#cameras-list').append(`
-			<div class="camera-item">
+		$('#cameras-list').prepend(`
+			<div class="camera-item" data-id="` + c['camera_id'] + `">
                 <div class="camera-item-left">
                     <span class="camera-item-name">` + c['name'] + `</span>
                     <span class="camera-item-location">` + c['location'] + `</span>
@@ -20,4 +19,9 @@ $(document).ready(function() {
             </div>
 		`)
 	})
+});
+
+$('#cameras-list').on('click', '.camera-item', function() {
+    cameraId = this.getAttribute('data-id');
+    window.location.href = '/preview/' + cameraId;
 });
