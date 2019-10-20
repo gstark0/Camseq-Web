@@ -13,9 +13,10 @@
 #camera-image {
     width: 790px;
     height: 100%;
-    background-image: url('../img/airport.jpg');
     background-position: center;
-    background-size: cover;
+    background-size: contain;
+    background-color: #2B3745;
+    background-repeat: no-repeat;
 }
 
 #camera-info {
