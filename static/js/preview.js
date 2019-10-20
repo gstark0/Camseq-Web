@@ -46,9 +46,13 @@ function updateTime() {
 
 function updateImage() {
     let imgUrl = cameraInfo['url'] + '?r=' + new Date().getTime();
-    $('#camera-image').css('background-image', 'url("' + imgUrl + '")');
 
-    let t = setTimeout(updateImage, 10000)
+    img_tag = new Image();
+    img_tag.onload = function() {
+        $('#camera-image').css('background-image', 'url("' + imgUrl + '")');
+        let t = setTimeout(updateImage, 5000);
+    }
+    img_tag.src = imgUrl;
 }
 
 function checkTime(i) {
