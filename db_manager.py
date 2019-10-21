@@ -19,6 +19,16 @@ def get_user(login, password):
 		result = cur.fetchone()
 	return result
 
+def get_all_cameras():
+	with sqlite3.connect(db_name) as conn:
+		# SQLite3 doesn't return keys by default
+		conn.row_factory = dict_factory
+		cur = conn.cursor()
+
+		cur.execute('SELECT * FROM cameras')
+		results = cur.fetchall()
+	return results
+
 def get_cameras_by_user_id(user_id):
 	with sqlite3.connect(db_name) as conn:
 		# SQLite3 doesn't return keys by default
