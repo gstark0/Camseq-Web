@@ -1,13 +1,31 @@
 from tensorflow import keras
 import os
+import cv2
 import numpy as np
+from config import width, height
+import urllib.request
 
 img_preprocessing = keras.preprocessing.image
+
+# Resize an image to correct size
+def resize_img(in_path='', in_url=''):
+	if in_path != '':
+		img = cv2.imread(in_path)
+	elif in_url != '':
+		req = urllib.request.urlopen(in_url)
+		arr = np.asarray(bytearray(req.read()), dtype=np.uint8)
+		img = cv2.imdecode(arr, -1)
+
+	resized_img = cv2.resize(img, (width, height))
+	resized_img = resized_img[...,::-1].astype(np.float32) / 255.0
+
+	return resized_img
+
 
 # Load and convert image to NumPy array
 def img_to_array(path):
 	img = img_preprocessing.load_img(path)
-	img_array = img_preprocessing.img_to_array(img)
+	img_array = img_preprocessing.img_to_array(img) / 255.0
 	return img_array
 
 

@@ -1,16 +1,20 @@
 from flask import Flask, render_template, request, session, redirect
 import db_manager as dbmngr
 from config import SECRET_KEY, footage_path
-from utils import img_to_array
+from utils import img_to_array, resize_img
 import urllib.request
 from model import Model
+import numpy as np
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = SECRET_KEY
 
 # AI Models
 fights_detector = Model()
-fights_detector.load_weights('')
+fights_detector.load_model('./models/fights_detector.h5')
+
+fire_detector = Model()
+fights_detector.load_model('./models/fire_detector.h5')
 
 def process_cameras():
 	cameras = dbmngr.get_all_cameras()
@@ -20,11 +24,18 @@ def process_cameras():
 		camera_id = camera['camera_id']
 		camera_url = camera['url']
 
-		img_path = '%s/%s.jpg' % (footage_path, camera_id)
-		urllib.request.urlretrieve(camera_url, img_path)
-		image_to_predict = img_to_array(img_path)
+		img = resize_img(in_url=camera_url)
+		img_to_predict = np.asarray([img])
 		
-		fight_prediction = fights_detector.predict(image_to_predict)
+		fight_prediction = fights_detector.predict(img_to_predict)
+		print('Fight prediction: ', fight_prediction, np.argmax(fight_prediction))
+		fire_prediction = fire_detector.predict(img_to_predict)
+		print('Fire prediction: ', fire_prediction, np.argmax(fire_prediction))
+
+		fight_prediction = np.argmax(fight_prediction)
+		fire_prediction = np.argmax(fire_prediction)
+
+		
 
 
 process_cameras()

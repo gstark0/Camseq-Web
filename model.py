@@ -15,15 +15,15 @@ class Model:
 			keras.layers.Dense(2, activation=tf.nn.softmax)
 		])
 
-	def load_weights(self, path):
-		print('Loading weights from "%s"...' % path)
+	def load_model(self, path):
+		print('Loading Model from "%s"...' % path)
 		self.model.load_weights(path)
-		print('Weights loaded!')
+		print('Model loaded!')
 
-	def save_weights(self, path):
-		print('Saving weights to "%s"...' % path)
+	def save_model(self, path):
+		print('Saving model to "%s"...' % path)
 		self.model.save_weights(path)
-		print('Weights saved!')
+		print('Model saved!')
 
 	def train(self, x_train, y_train, epochs=5, lr=0.001):
 		self.model.compile(optimizer=keras.optimizers.Adam(lr=lr), loss='sparse_categorical_crossentropy', metrics=['accuracy'])
@@ -35,6 +35,9 @@ class Model:
 		return self.model.predict(x)
 
 
-m = Model()
-x_train, y_train = utils.get_data(training_paths)
-m.train(x_train, y_train)
+#m = Model()
+#x_train, y_train = utils.get_data(training_paths)
+#m.load_model('fights_detector.h5')
+#print(m.predict(x_train))
+#m.train(x_train, y_train, epochs=4)
+#m.save_model('fire_detector.h5')
