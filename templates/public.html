@@ -20,16 +20,65 @@
 
         <nav>
             <div class="wrapper">
-                <a href="#"><img id="nav-logo" src="./static/img/logo.png"></a>
-                <span id="public-badge">Public</span>
+                <a href="/"><img id="nav-logo" src="./static/img/logo.png"></a>
+                <span id="public-badge">Map</span>
 
-                <a id="go-to-camseq" href="#">Przejdź do <b>Camseq Private</b></a>
+                <a id="go-to-camseq" href="/login">Przejdź do <b>Camseq Admin</b></a>
             </div>
         </nav>
 
+        <div id="info-panel">
+            <div id="info-panel-head">
+                <div id="safety-dot"></div>
+                <div id="info-panel-title">Bezpieczeństwo<br>regionu</div>
+                <div id="info-panel-status">Bezpiecznie</div>
+            </div>
+
+            <div id="info-panel-data">
+                <div class="data-row">
+                    <div class="data-item">
+                        <div class="data-label">Miasto</div>
+                        <div class="data-value" id="city">-</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">Region</div>
+                        <div class="data-value" id="region">-</div>
+                    </div>
+                </div>
+
+                <div class="data-separator" id="threats">Niebezpieczeństwa (tydzień)</div>
+                <div class="data-row">
+                    <div class="data-item">
+                        <div class="data-label">Pożary</div>
+                        <div class="data-value" id="fires">-</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">Wykryta broń</div>
+                        <div class="data-value" id="weapons">-</div>
+                    </div>
+                </div>
+
+                <div class="data-separator" id="warnings">Zagrożenia (tydzień)</div>
+                <div class="data-row">
+                    <div class="data-item">
+                        <div class="data-label">Bójki</div>
+                        <div class="data-value" id="fights">-</div>
+                    </div>
+                    <div class="data-item" style="width: 150px">
+                        <div class="data-label">Zdarzenia drogowe</div>
+                        <div class="data-value" id="crashes">-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="mapid"></div>
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="./static/js/leaflet-heat.js"></script>
+        <script>
+            var coordList = {{ coord_list | tojson }}
+        </script>
         <script src="./static/js/public.js"></script>
     </body>
 </html>

@@ -4,8 +4,17 @@ import cv2
 import numpy as np
 from config import width, height
 import urllib.request
+import requests
 
 img_preprocessing = keras.preprocessing.image
+
+def fetch_location(lat, lon):
+	r = requests.get('https://locationiq.com/v1/reverse_sandbox.php?format=json&lat=%s&lon=%s&accept-language=en' % (lat, lon))
+	r = r.json()['address']
+	city = r['city']
+	district = r['city_district']
+
+	return city, district
 
 # Resize an image to correct size
 def resize_img(in_path='', in_url=''):

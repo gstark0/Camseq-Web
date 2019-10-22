@@ -1,10 +1,11 @@
 from flask import Flask, render_template, request, session, redirect, send_from_directory
 import db_manager as dbmngr
-from config import SECRET_KEY, footage_path
-from utils import img_to_array, resize_img
+from config import SECRET_KEY, footage_path, incident_descriptions
+from utils import img_to_array, resize_img, fetch_location
 import urllib.request
 from model import Model
 import numpy as np
+import json
 import cv2
 import os
 
@@ -31,6 +32,7 @@ def process_cameras():
 	for camera in cameras:
 		camera_id = camera['camera_id']
 		camera_url = camera['url']
+		camera_coord = camera['coordinates']
 
 		original_img, img = resize_img(in_url=camera_url)
 		img_to_predict = np.asarray([img])
@@ -45,11 +47,11 @@ def process_cameras():
 
 		if fight_prediction == 0:
 			print('Camera #%s - Fight detected!' % camera_id)
-			#incident_id = dbmngr.add_incident(camera_id, 'warning', 'Wykryto bójkę')
+			#incident_id = dbmngr.add_incident(camera_id, 'warning', incident_descriptions['fight'], camera_coord)
 			#save_footage(incident_id, original_img)
 		if fire_prediction == 0:
 			print('Camera #%s - Fire detected!' % camera_id)
-			#incident_id = dbmngr.add_incident(camera_id, 'danger', 'Wykryto płomień')
+			#incident_id = dbmngr.add_incident(camera_id, 'danger', incident_descriptions['fire'], camera_coord)
 			#save_footage(incident_id, original_img)
 
 		dbmngr.count_incidents(camera_id)
@@ -62,9 +64,23 @@ process_cameras()
 def get_saved_footage(filename):
 	return send_from_directory('./footage/', filename)
 
-@app.route('/public')
+@app.route('/region')
+def get_region_data():
+	lat = request.args.get('lat')
+	lon = request.args.get('lon')
+	city, district = fetch_location(lat, lon)
+	fires, weapons, fights, car_crashes = dbmngr.get_data_by_region(city, district)
+
+	return json.dumps({'fires': fires, 'weapons': weapons, 'fights': fights, 'car_crashes': car_crashes, 'city': city, 'district': district})
+
+@app.route('/')
+def main_route():
+	return redirect('/map')
+
+@app.route('/map')
 def public():
-    return render_template('public.html')
+	coord_list = dbmngr.get_coord_list()
+	return render_template('public.html', coord_list=coord_list)
 
 @app.route('/preview/<int:camera_id>')
 def preview(camera_id):

@@ -8,6 +8,13 @@ footage_path = './footage'
 width = 128
 height = 128
 
+incident_descriptions = {
+	'fire': 'Wykryto pożar',
+	'weapon': 'Wykryto broń',
+	'fight': 'Wykryto bójkę',
+	'car_crash': 'Wykryto zdarzenie drogowe'
+}
+
 '''
 training_paths = [
 	['../fights/fight', '../dataset/fight'],

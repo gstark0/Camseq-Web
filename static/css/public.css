@@ -16,4 +16,91 @@
 
 #mapid {
     height: calc(100% - 70px);
+    z-index: 0;
+}
+
+#info-panel {
+    z-index: 10;
+    position: fixed;
+    right: 170px;
+    top: 30%;
+    padding: 50px 30px;
+    background-color: #2B3745;
+    border-radius: 10px;
+    box-shadow: 0 3px 30px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+}
+
+#info-panel-head {
+    display: flex;
+    align-items: center;
+}
+
+#info-panel-title {
+    margin: 0 25px 0 15px;
+    font-size: 21px;
+    color: white
+}
+
+#info-panel-status {
+    font-size: 14px;
+    color: white;
+    background-color: #36B250;
+    border-radius: 10px;
+    height: 22px;
+    padding: 0 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#safety-dot {
+    height: 19px;
+    width: 19px;
+    border-radius: 100px;
+    background-color: #36B250;
+    border: 3px solid white;
+}
+
+#info-panel-data {
+    display: flex;
+    flex-direction: column;
+    margin-left: 40px;
+    margin-top: 30px;
+}
+
+.data-row {
+    display: flex;
+}
+
+.data-separator {
+    margin-top: 30px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#threats {
+    color: #FE4155;
+}
+
+#warnings {
+    color: #FFBF45;
+}
+
+.data-label {
+    color: white;
+    font-size: 14px;
+    opacity: .35;
+}
+
+.data-value {
+    font-size: 16px;
+    color: white;
+    width: 150px;
+}
+
+.data-item {
+    width: 100px;
 }
