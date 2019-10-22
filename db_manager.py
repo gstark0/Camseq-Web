@@ -71,3 +71,19 @@ def add_incident(camera_id, type_, description):
 		cur.execute('INSERT into incidents (camera_id, type, description, time) VALUES (?, ?, ?, ?)', (camera_id, type_, description, curr_time))
 		incident_id = cur.lastrowid
 	return incident_id
+
+def count_incidents(camera_id):
+	with sqlite3.connect(db_name) as conn:
+		# SQLite3 doesn't return keys by default
+		conn.row_factory = dict_factory
+		cur = conn.cursor()
+
+		cur.execute('SELECT * FROM incidents WHERE type="warning"')
+		warnings = len(cur.fetchall())
+
+		cur.execute('SELECT * FROM incidents WHERE type="danger"')
+		dangers = len(cur.fetchall())
+
+		conn.commit()
+		cur.execute('UPDATE cameras SET dangers=?, warnings=? WHERE camera_id=?', (dangers, warnings, camera_id))
+	return 1

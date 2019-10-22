@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session, redirect
+from flask import Flask, render_template, request, session, redirect, send_from_directory
 import db_manager as dbmngr
 from config import SECRET_KEY, footage_path
 from utils import img_to_array, resize_img
@@ -45,17 +45,23 @@ def process_cameras():
 
 		if fight_prediction == 0:
 			print('Camera #%s - Fight detected!' % camera_id)
-			incident_id = dbmngr.add_incident(camera_id, 'warning', 'Wykryto bójkę')
-			save_footage(incident_id, original_img)
+			#incident_id = dbmngr.add_incident(camera_id, 'warning', 'Wykryto bójkę')
+			#save_footage(incident_id, original_img)
 		if fire_prediction == 0:
 			print('Camera #%s - Fire detected!' % camera_id)
-			incident_id = dbmngr.add_incident(camera_id, 'danger', 'Wykryto płomień')
-			save_footage(incident_id, original_img)
+			#incident_id = dbmngr.add_incident(camera_id, 'danger', 'Wykryto płomień')
+			#save_footage(incident_id, original_img)
+
+		dbmngr.count_incidents(camera_id)
 
 
 process_cameras()
 
 # --------- WEB ---------
+@app.route('/footage/<path:filename>')
+def get_saved_footage(filename):
+	return send_from_directory('./footage/', filename)
+
 @app.route('/public')
 def public():
     return render_template('public.html')

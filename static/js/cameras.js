@@ -9,11 +9,11 @@ $(document).ready(function() {
                 <div class="camera-item-right">
                     <div class="camera-item-alerts threat">
                         <i class="fas fa-exclamation-circle"></i>
-                        <span>0</span>
+                        <span>` + c['dangers'] + `</span>
                     </div>
                     <div class="camera-item-alerts warning">
                         <i class="fas fa-exclamation-triangle"></i>
-                        <span>0</span>
+                        <span>` + c['warnings'] + `</span>
                     </div>
                 </div>
             </div>
