@@ -5,6 +5,8 @@ from utils import img_to_array, resize_img
 import urllib.request
 from model import Model
 import numpy as np
+import cv2
+import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = SECRET_KEY
@@ -17,7 +19,10 @@ fire_detector = Model()
 fights_detector.load_model('./models/fire_detector.h5')
 
 def save_footage(incident_id, original_img):
-	pass
+	incident_path = '%s/%s' % (footage_path, incident_id)
+	os.mkdir(incident_path)
+	cv2.imwrite('%s/img.jpg' % incident_path, original_img)
+
 
 def process_cameras():
 	cameras = dbmngr.get_all_cameras()
@@ -42,7 +47,7 @@ def process_cameras():
 			print('Camera #%s - Fight detected!' % camera_id)
 			incident_id = dbmngr.add_incident(camera_id, 'warning', 'Wykryto bójkę')
 			save_footage(incident_id, original_img)
-		if fire_prediction == 1:
+		if fire_prediction == 0:
 			print('Camera #%s - Fire detected!' % camera_id)
 			incident_id = dbmngr.add_incident(camera_id, 'danger', 'Wykryto płomień')
 			save_footage(incident_id, original_img)
