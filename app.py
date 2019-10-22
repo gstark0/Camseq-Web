@@ -16,6 +16,9 @@ fights_detector.load_model('./models/fights_detector.h5')
 fire_detector = Model()
 fights_detector.load_model('./models/fire_detector.h5')
 
+def save_footage(incident_id, original_img):
+	pass
+
 def process_cameras():
 	cameras = dbmngr.get_all_cameras()
 
@@ -24,7 +27,7 @@ def process_cameras():
 		camera_id = camera['camera_id']
 		camera_url = camera['url']
 
-		img = resize_img(in_url=camera_url)
+		original_img, img = resize_img(in_url=camera_url)
 		img_to_predict = np.asarray([img])
 		
 		fight_prediction = fights_detector.predict(img_to_predict)
@@ -35,7 +38,14 @@ def process_cameras():
 		fight_prediction = np.argmax(fight_prediction)
 		fire_prediction = np.argmax(fire_prediction)
 
-		
+		if fight_prediction == 0:
+			print('Camera #%s - Fight detected!' % camera_id)
+			incident_id = dbmngr.add_incident(camera_id, 'warning', 'Wykryto bójkę')
+			save_footage(incident_id, original_img)
+		if fire_prediction == 1:
+			print('Camera #%s - Fire detected!' % camera_id)
+			incident_id = dbmngr.add_incident(camera_id, 'danger', 'Wykryto płomień')
+			save_footage(incident_id, original_img)
 
 
 process_cameras()

@@ -1,4 +1,5 @@
 import sqlite3
+from datetime import datetime
 from config import db_name
 
 # Getting column names
@@ -58,3 +59,15 @@ def get_incidents_by_camera(camera_id):
 		cur.execute('SELECT * FROM incidents WHERE camera_id=?', (camera_id,))
 		results = cur.fetchall()
 	return results
+
+def add_incident(camera_id, type_, description):
+	with sqlite3.connect(db_name) as conn:
+		# SQLite3 doesn't return keys by default
+		conn.row_factory = dict_factory
+		cur = conn.cursor()
+
+		curr_time = datetime.now()
+		curr_time = curr_time.strftime('%d/%m/%Y - %H:%M:%S')
+		cur.execute('INSERT into incidents (camera_id, type, description, time) VALUES (?, ?, ?, ?)', (camera_id, type_, description, curr_time))
+		incident_id = cur.lastrowid
+	return incident_id

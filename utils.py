@@ -19,7 +19,7 @@ def resize_img(in_path='', in_url=''):
 	resized_img = cv2.resize(img, (width, height))
 	resized_img = resized_img[...,::-1].astype(np.float32) / 255.0
 
-	return resized_img
+	return img, resized_img
 
 
 # Load and convert image to NumPy array
