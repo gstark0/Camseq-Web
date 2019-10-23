@@ -74,7 +74,7 @@ function updateImage() {
     img_tag = new Image();
     img_tag.onload = function() {
         $('#camera-image').css('background-image', 'url("' + imgUrl + '")');
-        let t = setTimeout(updateImage, 5000);
+        let t = setTimeout(updateImage, 2000);
     }
     img_tag.src = imgUrl;
 }

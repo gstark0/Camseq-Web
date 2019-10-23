@@ -108,10 +108,10 @@ def count_incidents(camera_id):
 		conn.row_factory = dict_factory
 		cur = conn.cursor()
 
-		cur.execute('SELECT * FROM incidents WHERE type="warning"')
+		cur.execute('SELECT * FROM incidents WHERE type="warning" AND camera_id=?', (camera_id,))
 		warnings = len(cur.fetchall())
 
-		cur.execute('SELECT * FROM incidents WHERE type="danger"')
+		cur.execute('SELECT * FROM incidents WHERE type="danger" AND camera_id=?', (camera_id,))
 		dangers = len(cur.fetchall())
 
 		conn.commit()
@@ -144,10 +144,10 @@ def get_coord_list():
 		camera_ids += cur.fetchall()
 		
 		camera_ids = [camera_id[0] for camera_id in camera_ids]
+		print(camera_ids)
 		conn.commit()
 
 		last_id = -1
-		last_coord = [0.0, 0.0, 0.0]
 		coord_list = []
 		for camera_id in camera_ids:
 			if last_id == camera_id:
@@ -155,10 +155,8 @@ def get_coord_list():
 			else:
 				cur.execute('SELECT coordinates FROM cameras WHERE camera_id=?', (camera_id,))
 				result = cur.fetchone()[0]
-				last_coord[0] = float(result.split(', ')[0])
-				last_coord[1] = float(result.split(', ')[1])
-				last_coord[2] = 0.2
-				coord_list.append(last_coord)
+				coord_list.append([float(result.split(', ')[0]), float(result.split(', ')[1]), 0.2])
 				last_id = camera_id
 				conn.commit()
+	print(coord_list)
 	return coord_list

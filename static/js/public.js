@@ -7,7 +7,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png', {
     id: 'mapbox.streets',
 }).addTo(mymap);
 
-var heat = L.heatLayer([coordList[0]], {radius: 25, maxZoom: 14}).addTo(mymap);
+var heat = L.heatLayer(coordList, {radius: 35, maxZoom: 12}).addTo(mymap);
 
 mymap.on('moveend', loadData);
 

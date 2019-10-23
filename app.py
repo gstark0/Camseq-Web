@@ -46,8 +46,8 @@ def process_cameras():
 		print('Fire prediction: ', fire_prediction, np.argmax(fire_prediction))
 		crash_prediction = crash_detector.predict(img_to_predict)
 		print('Crash prediction: ', crash_prediction, np.argmax(crash_prediction))
-		gun_detection = detect_gun(original_img)
-		print('Gun detection: ', gun_detection)
+		#gun_detection = detect_gun(original_img)
+		#print('Gun detection: ', gun_detection)
 
 		fight_prediction = np.argmax(fight_prediction)
 		fire_prediction = np.argmax(fire_prediction)
@@ -65,8 +65,8 @@ def process_cameras():
 			print('Camera #%s - Car crash detected!' % camera_id)
 			#incident_id = dbmngr.add_incident(camera_id, 'danger', incident_descriptions['car_crash'], camera_coord)
 			#save_footage(incident_id, original_img)
-		if gun_detection:
-			print('Camera #%s - Gun detected!' % camera_id)
+		#if gun_detection:
+			#print('Camera #%s - Gun detected!' % camera_id)
 			#incident_id = dbmngr.add_incident(camera_id, 'danger', incident_descriptions['weapon'], camera_coord)
 			#save_footage(incident_id, original_img)
 
