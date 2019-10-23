@@ -55,16 +55,16 @@ def process_cameras():
 
 		if fight_prediction == 0:
 			print('Camera #%s - Fight detected!' % camera_id)
-			#incident_id = dbmngr.add_incident(camera_id, 'warning', incident_descriptions['fight'], camera_coord)
-			#save_footage(incident_id, original_img)
+			incident_id = dbmngr.add_incident(camera_id, 'warning', incident_descriptions['fight'], camera_coord)
+			save_footage(incident_id, original_img)
 		if fire_prediction == 0:
 			print('Camera #%s - Fire detected!' % camera_id)
-			#incident_id = dbmngr.add_incident(camera_id, 'danger', incident_descriptions['fire'], camera_coord)
-			#save_footage(incident_id, original_img)
+			incident_id = dbmngr.add_incident(camera_id, 'danger', incident_descriptions['fire'], camera_coord)
+			save_footage(incident_id, original_img)
 		if crash_prediction == 0:
 			print('Camera #%s - Car crash detected!' % camera_id)
-			#incident_id = dbmngr.add_incident(camera_id, 'danger', incident_descriptions['car_crash'], camera_coord)
-			#save_footage(incident_id, original_img)
+			incident_id = dbmngr.add_incident(camera_id, 'danger', incident_descriptions['car_crash'], camera_coord)
+			save_footage(incident_id, original_img)
 		#if gun_detection:
 			#print('Camera #%s - Gun detected!' % camera_id)
 			#incident_id = dbmngr.add_incident(camera_id, 'danger', incident_descriptions['weapon'], camera_coord)
