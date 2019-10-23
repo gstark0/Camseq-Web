@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, session, redirect, send_from_directory
 import db_manager as dbmngr
 from config import SECRET_KEY, footage_path, incident_descriptions
-from utils import img_to_array, resize_img, fetch_location
+from utils import img_to_array, resize_img, fetch_location, detect_gun
 import urllib.request
 from model import Model
 import numpy as np
@@ -17,7 +17,10 @@ fights_detector = Model()
 fights_detector.load_model('./models/fights_detector.h5')
 
 fire_detector = Model()
-fights_detector.load_model('./models/fire_detector.h5')
+fire_detector.load_model('./models/fire_detector.h5')
+
+crash_detector = Model()
+crash_detector.load_model('./models/crash_detector.h5')
 
 def save_footage(incident_id, original_img):
 	incident_path = '%s/%s' % (footage_path, incident_id)
@@ -41,9 +44,14 @@ def process_cameras():
 		print('Fight prediction: ', fight_prediction, np.argmax(fight_prediction))
 		fire_prediction = fire_detector.predict(img_to_predict)
 		print('Fire prediction: ', fire_prediction, np.argmax(fire_prediction))
+		crash_prediction = crash_detector.predict(img_to_predict)
+		print('Crash prediction: ', crash_prediction, np.argmax(crash_prediction))
+		gun_detection = detect_gun(original_img)
+		print('Gun detection: ', gun_detection)
 
 		fight_prediction = np.argmax(fight_prediction)
 		fire_prediction = np.argmax(fire_prediction)
+		crash_prediction = np.argmax(crash_prediction)
 
 		if fight_prediction == 0:
 			print('Camera #%s - Fight detected!' % camera_id)
@@ -53,9 +61,16 @@ def process_cameras():
 			print('Camera #%s - Fire detected!' % camera_id)
 			#incident_id = dbmngr.add_incident(camera_id, 'danger', incident_descriptions['fire'], camera_coord)
 			#save_footage(incident_id, original_img)
+		if crash_prediction == 0:
+			print('Camera #%s - Car crash detected!' % camera_id)
+			#incident_id = dbmngr.add_incident(camera_id, 'danger', incident_descriptions['car_crash'], camera_coord)
+			#save_footage(incident_id, original_img)
+		if gun_detection:
+			print('Camera #%s - Gun detected!' % camera_id)
+			#incident_id = dbmngr.add_incident(camera_id, 'danger', incident_descriptions['weapon'], camera_coord)
+			#save_footage(incident_id, original_img)
 
 		dbmngr.count_incidents(camera_id)
-
 
 process_cameras()
 

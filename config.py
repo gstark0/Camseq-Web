@@ -20,9 +20,15 @@ training_paths = [
 	['../fights/fight', '../dataset/fight'],
 	['../fights/noFight', '../dataset/noFight']
 ]
-'''
+
 
 training_paths = [
 	['../fire/fire', '../dataset/fire'],
 	['../fire/noFire', '../dataset/noFire']
+]
+'''
+
+training_paths = [
+	['../crashes/crash', '../dataset/crash'],
+	['../crashes/noCrash', '../dataset/noCrash']
 ]

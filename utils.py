@@ -5,6 +5,7 @@ import numpy as np
 from config import width, height
 import urllib.request
 import requests
+import imutils
 
 img_preprocessing = keras.preprocessing.image
 
@@ -30,6 +31,19 @@ def resize_img(in_path='', in_url=''):
 
 	return img, resized_img
 
+# Load cascade and detect gun on the image provided
+def detect_gun(img):
+	gun_cascade = cv2.CascadeClassifier('cascade.xml')
+	#img = imutils.resize(img, width=500)
+	gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+	gray = cv2.GaussianBlur(gray, (21, 21), 0)
+	gun = gun_cascade.detectMultiScale(gray, 1.3, 5, minSize = (50, 50))
+
+	gun_exist = False
+	if len(gun) > 0:
+		gun_exist = True
+
+	return gun_exist
 
 # Load and convert image to NumPy array
 def img_to_array(path):
