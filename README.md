@@ -2,7 +2,7 @@
 
 #### Inteligentny system wsparcia bezpieczeństwa publicznego z wykorzystaniem algorytmów sztucznej inteligencji
 
-![](https://raw.githubusercontent.com/gstark0/Camseq-Web/master/pictures/banner.png)
+<img src="https://raw.githubusercontent.com/gstark0/Camseq-Web/master/pictures/banner.png" width="500">
 
 Zobacz prezentację systemu
 
