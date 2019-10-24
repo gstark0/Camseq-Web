@@ -4,9 +4,8 @@
 
 <img src="https://raw.githubusercontent.com/gstark0/Camseq-Web/master/pictures/banner.png" width="500">
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ib39HBUxWwM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 Zobacz prezentację systemu
+
 [![](http://img.youtube.com/vi/ib39HBUxWwM/0.jpg)](http://www.youtube.com/watch?v=ib39HBUxWwM "Prezentacja systemu")
 
 ### O Projekcie
